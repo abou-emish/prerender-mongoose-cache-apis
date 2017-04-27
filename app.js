@@ -1,4 +1,4 @@
-//dependencies
+// dependencies
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
@@ -7,23 +7,23 @@ const morganLogger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');  
 
-//Mongodb
-const dbConfig = require('./config/database.js');
-const dbUrl = process.env.MONGODB_URL || dbConfig.url;
+// Mongodb
+const dbConfig = require('./config/database');
+const dbUrl = dbConfig.url;
+const dbOptions = dbConfig.options;
 
-const dbOptions = {};
 mongoose.connect(dbUrl, dbOptions).then(
-    () => { return console.log('Database Ready'); },
+    () => { return console.log('MongoDB is Ready'); },
     err => {
         return console.log(err);
     }
 );
 
-//Express app
+// Express app
 const app = express();
 
 app.use(express.static(path.join(__dirname, 'public')));
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+// app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());

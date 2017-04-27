@@ -1,8 +1,8 @@
-//dependencies
+// dependencies
 const restful = require('node-restful');
 const mongoose = restful.mongoose;
 
-//Schema
+// Page document Schema
 var pageSchema = new mongoose.Schema({
     url: String,
     content: String,
@@ -10,4 +10,4 @@ var pageSchema = new mongoose.Schema({
     modificationDate: Date
 });
 
-module.exports = restful.model('Page',pageSchema);
+module.exports = restful.model('Page', pageSchema);

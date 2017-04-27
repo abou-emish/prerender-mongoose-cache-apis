@@ -1,17 +1,35 @@
 {
-  "name": "prerender-cache-api",
+  "name": "prerender-mongoose-cache-apis",
   "version": "0.0.1",
   "description": "Prerender MongoDb Cache APIs",
+  "keywords": [
+    "prerender",
+    "mongodb",
+    "cach",
+    "express"
+  ],
+  "author": "Mohamed Abou-Emish",
+  "license": "ISC",
+  "homepage": "https://github.com/abou-emish/prerender-mongoose-cache-apis",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/abou-emish/prerender-mongoose-cache-apis.git"
+  },
+  "bugs": {
+    "url": "https://github.com/abou-emish/prerender-mongoose-cache-apis/issues"
+  },
   "dependencies": {
     "body-parser": "^1.17.1",
-    "cookie-parser": "~1.4.3",    
+    "cookie-parser": "~1.4.3",
     "debug": "~2.6.3",
     "express": "^4.15.2",
     "jade": "^1.11.0",
-    "morgan": "~1.8.1",
     "mongoose": "^4.9.6",
+    "morgan": "~1.8.1",
     "node-restful": "^0.2.6",
-    "serve-favicon": "~2.4.2" 
+    "passport": "^0.3.2",
+    "passport-http": "^0.3.0",
+    "serve-favicon": "~2.4.2"
   },
   "devDependencies": {
     "nodemon": "^1.11.0"
@@ -21,8 +39,6 @@
     "dev": "nodemon ./bin/www",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Mohamed Abou-Emish",
-  "license": "ISC",
   "engines": {
     "node": "6.10.x"
   }
