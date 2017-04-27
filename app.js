@@ -1,32 +1,15 @@
-var express = require('express');
+//dependencies
+const express = require('express');
 const mongoose = require('mongoose');
-var path = require('path');
-var favicon = require('serve-favicon');
-var morganLogger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+const path = require('path');
+const favicon = require('serve-favicon');
+const morganLogger = require('morgan');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');  
 
-var app = express();
-
-app.use(bodyParser.json()); // support json encoded bodies
-app.use(bodyParser.urlencoded({ extended: true }));
-
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
-
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(morganLogger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-
-app.use('/', require('./routes/index'));
-
-const dbUrl = process.env.MONGODB_URL ||
-    'mongodb://localhost/prerendercache';
+//Mongodb
+const dbConfig = require('./config/database.js');
+const dbUrl = process.env.MONGODB_URL || dbConfig.url;
 
 const dbOptions = {};
 mongoose.connect(dbUrl, dbOptions).then(
@@ -35,6 +18,24 @@ mongoose.connect(dbUrl, dbOptions).then(
         return console.log(err);
     }
 );
+
+//Express app
+const app = express();
+
+app.use(express.static(path.join(__dirname, 'public')));
+//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cookieParser());
+app.use(morganLogger('dev'));
+
+// Express view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
+
+
+app.use('/', require('./routes/index'));
+app.use('/api', require('./routes/api'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
