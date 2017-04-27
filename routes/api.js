@@ -10,4 +10,9 @@ Page.methods(['get', 'post', 'put', 'delete']);
 //Register routes for all above http methods
 Page.register(router, '/pages');
 
+//Get Pages 
+router.get('/', (req, res) => {
+    res.render('api', { title: 'Prerender Mongodb cach Restful APIs' });
+});
+
 module.exports = router;
