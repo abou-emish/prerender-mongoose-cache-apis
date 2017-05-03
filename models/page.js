@@ -6,8 +6,7 @@ const mongoose = restful.mongoose;
 var pageSchema = new mongoose.Schema({
     url: String,
     content: String,
-    creationDate: Date,
-    modificationDate: Date
+    creationDate: Date
 });
 
 module.exports = restful.model('Page', pageSchema);

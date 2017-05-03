@@ -5,11 +5,12 @@
   "keywords": [
     "prerender",
     "mongodb",
+    "mongoose",
     "cach",
     "express"
   ],
   "author": "Mohamed Abou-Emish",
-  "license": "ISC",
+  "license": "MIT",
   "homepage": "https://github.com/abou-emish/prerender-mongoose-cache-apis",
   "repository": {
     "type": "git",

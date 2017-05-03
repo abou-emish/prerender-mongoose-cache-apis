@@ -9,10 +9,8 @@ const bodyParser = require('body-parser');
 
 // Mongodb
 const dbConfig = require('./config/database');
-const dbUrl = dbConfig.url;
-const dbOptions = dbConfig.options;
 
-mongoose.connect(dbUrl, dbOptions).then(
+mongoose.connect(dbConfig.url, dbConfig.options).then(
     () => { return console.log('MongoDB is Ready'); },
     err => {
         return console.log(err);
