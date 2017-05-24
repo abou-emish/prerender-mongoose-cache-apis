@@ -9,7 +9,21 @@ const Passport = require('../auth/passport/basic');
 const Page = require('../models/page');
 
 // define which verps will be registered when you call register(router, '/pages');
-Page.methods(['get', 'post', 'put', 'delete']);
+Page.methods(['get', 'post', 'put']);
+
+// remove
+Page.route('.delete', function (req, res, next) {
+    //query string is already an object so we can pass to remove parameter
+    Page.remove(req.query, function (err) {
+        if (err) {
+            console.log(err);
+            next(err);
+        }
+        else
+            res.status(204);
+            res.send();
+    });
+});
 
 //  api landing page: api/ 
 router.get('/', (req, res) => {
