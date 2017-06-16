@@ -21,7 +21,21 @@ Page.route('.delete', function (req, res, next) {
         }
         else
             res.status(204);
-            res.send();
+        res.send();
+    });
+});
+
+// remove
+Page.route('count', function (req, res, next) {
+    //query string is already an object so we can pass to remove parameter
+    Page.count(req.query, function (err, result) {
+        if (err) {
+            console.log(err);
+            next(err);
+        }
+        else
+            res.status(200);
+        res.json({ "count": result })
     });
 });
 
